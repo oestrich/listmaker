@@ -1,10 +1,22 @@
-.troop-types ul {
-  list-style-type: none; }
-.troop-types li {
-  background: #dddddd;
-  margin: 10px 0px;
-  padding: 5px;
-  width: 250px; }
+body {
+  width: 960px;
+  margin-left: auto;
+  margin-right: auto; }
+
+.troop-type {
+  float: left; }
+  .troop-type ul {
+    list-style-type: none;
+    height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-left: 20px;
+    width: 280px; }
+    .troop-type ul li {
+      background: #dddddd;
+      margin: 10px 0px;
+      padding: 5px;
+      width: 250px; }
 
 .troop .count {
   display: inline; }
@@ -15,6 +27,7 @@
 .troop .options h5 {
   margin: 5px 0px 0px 0px; }
 .troop .options ul {
+  height: auto;
   list-style-type: disc; }
   .troop .options ul li {
     width: 150px;

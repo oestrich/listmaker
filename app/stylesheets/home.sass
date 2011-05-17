@@ -1,11 +1,22 @@
-.troop-types
+body
+  width: 960px
+  margin-left: auto
+  margin-right: auto
+
+.troop-type
+  float: left
   ul
     list-style-type: none
-  li
-    background: #DDD
-    margin: 10px 0px
-    padding: 5px
-    width: 250px
+    height: 300px
+    overflow-y: scroll
+    overflow-x: hidden
+    padding-left: 20px
+    width: 280px
+    li
+      background: #DDD
+      margin: 10px 0px
+      padding: 5px
+      width: 250px
 
 .troop
   .count
@@ -18,6 +29,7 @@
     h5
       margin: 5px 0px 0px 0px
     ul
+      height: auto
       list-style-type: disc
       li
         width: 150px
