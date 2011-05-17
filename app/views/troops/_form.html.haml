@@ -18,7 +18,7 @@
     = f.text_field :count
   .field
     = f.label :point_type_id, "Point Type"
-    = f.select(:point_type_id, Troop.point_types, :prompt => true)
+    = f.select(:point_type_id, Troop.point_types.inject([]) { |select, type| select << [type, select.length] }, :prompt => true)
   .field
     = f.label :troop_type_id, "Troop Type"
     = f.collection_select(:troop_type_id, troop_types, :id, :name, :prompt => true)
