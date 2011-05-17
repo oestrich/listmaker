@@ -27,10 +27,12 @@ Feature: Home controller
     And  I should see "Special"
     And  I should see "Rare"
 
+  @wip
   Scenario: I should see troops in categories
     Given the following Troops exist:
       | name        | base_points | troop_type |
       | Orc Warboss | 75          | Lord       |
     And   I am on the home page
     Then  I should see "Orc Warboss" within "#troop-type-lord"
+    And   I should see "75" within "#troop-type-lord"
 

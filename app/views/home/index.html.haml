@@ -12,4 +12,9 @@
       %h3= troop_type.name
       %ul
         - troop_type.troops.each do |troop|
-          %li= troop.name
+          %li
+            .name
+              = troop.name
+            .points
+              Points: 
+              = troop.base_points
