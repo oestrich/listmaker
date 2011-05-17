@@ -12,3 +12,11 @@
   display: inline; }
 .troop .delete {
   float: right; }
+.troop .options h5 {
+  margin: 5px 0px 0px 0px; }
+.troop .options ul {
+  list-style-type: disc; }
+  .troop .options ul li {
+    width: 150px;
+    padding: 0px;
+    margin: 0px; }

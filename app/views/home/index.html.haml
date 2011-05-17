@@ -31,12 +31,18 @@
                 pts
             .options
               = link_to 'Add option', new_troop_option_path(troop)
-              %ul
-                - troop.options.each do |option|
-                  %li
-                    = option.points
-                    - if option.type == :single
-                      pts
-                    - else
-                      pts/per
-                    = option.name
+              %h5 Options
+              - if troop.options.count == 0
+                None
+              - else
+                %ul
+                  - troop.options.each do |option|
+                    %li
+                      .points
+                        = option.points
+                        - if option.type == :single
+                          pts
+                        - else
+                          = "pts/per #{troop.name}"
+                      .name
+                        = option.name
