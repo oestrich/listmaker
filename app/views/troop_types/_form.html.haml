@@ -1,0 +1,16 @@
+= form_for @troop_type do |f|
+  -if @troop_type.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@troop_type.errors.count, "error")} prohibited this troop_type from being saved:"
+      %ul
+        - @troop_type.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :percentage
+    = f.text_field :percentage
+  .actions
+    = f.submit 'Save'
