@@ -12,4 +12,5 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'cucumber'
+  gem 'cucumber-rails'
 end
