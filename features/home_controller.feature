@@ -27,7 +27,6 @@ Feature: Home controller
     And  I should see "Special"
     And  I should see "Rare"
 
-  @wip
   Scenario: I should see troops in categories
     Given the following Troops exist:
       | name        | base_points | troop_type |
