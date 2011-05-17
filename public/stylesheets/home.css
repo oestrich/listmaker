@@ -10,3 +10,5 @@
   display: inline; }
 .troop .name {
   display: inline; }
+.troop .delete {
+  float: right; }

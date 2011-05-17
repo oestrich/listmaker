@@ -17,6 +17,8 @@
       %ul
         - troop_type.troops.each do |troop|
           %li.troop
+            .delete
+              =button_to('Delete', troop_path(troop), :confirm => 'Are you sure?', :method => "delete")
             .count
               = troop.count
             .name
@@ -27,5 +29,3 @@
                 pts/per
               - else
                 pts
-            .delete
-              =button_to('Delete', troop_path(troop), :confirm => 'Are you sure?', :method => "delete")
