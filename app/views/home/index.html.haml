@@ -22,8 +22,8 @@
             .name
               = troop.name
             .points
-              Points: 
               = troop.base_points
-            .point_type
-              Point Type:
-              = troop.point_type.to_s.titleize
+              - if troop.point_type == :group
+                pts/per
+              - else
+                pts

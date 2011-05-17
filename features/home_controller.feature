@@ -33,9 +33,19 @@ Feature: Home controller
       | Orc Warboss | 75          | 1     | Lord       | 0             |
     And   I am on the home page
     Then  I should see "Orc Warboss" within "#troop-type-lord"
-    And   I should see "75" within "#troop-type-lord"
-    And   I should see "Single" within "#troop-type-lord"
+    And   I should see "75 pts" within "#troop-type-lord"
     And   I should see "1" within "#troop-type-lord"
+
+  Scenario: Group point type
+    Given the following Troops exist:
+      | name        | base_points | count | troop_type | point_type_id |
+      | Orc Warboss | 75          | 1     | Lord       | 0             |
+      | Orc Boys    | 4           | 10    | Core       | 1             |
+    And   I am on the home page
+    Then  I should see "Orc Boys" within "#troop-type-core"
+    And   I should see "4 pts/per" within "#troop-type-core"
+    And   I should see "10" within "#troop-type-core"
+    And   I should not see "75 pts/per" within "#troop-type-lord"
 
   Scenario: I should see total points
     Given the following Troops exist:
