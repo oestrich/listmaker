@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110517124117) do
+ActiveRecord::Schema.define(:version => 20110517181143) do
+
+  create_table "options", :force => true do |t|
+    t.string   "name"
+    t.integer  "points"
+    t.integer  "type_id"
+    t.integer  "troop_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "troop_types", :force => true do |t|
     t.string   "name"
