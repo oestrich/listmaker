@@ -24,7 +24,7 @@ describe Troop do
   end
 
   describe 'self.total_points' do
-    before do
+    before :each do
       Factory(:troop, :base_points => 25)
       Factory(:troop, :base_points => 10, :count => 20)
     end
@@ -35,11 +35,19 @@ describe Troop do
   end
 
   describe '#destroy' do
-    before do
+    before :each do
       Factory(:option, :troop => @subject)
     end
     
     it 'should destroy associated options' do
+    end
+  end
+
+  describe 'should auto add options based on point type' do
+    it 'auto add command group for group' do
+      @subject = Factory(:troop, :point_type_id => 1)
+
+      @subject.options.count.should == 1
     end
   end
 end

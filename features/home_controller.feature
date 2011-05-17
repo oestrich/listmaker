@@ -54,7 +54,7 @@ Feature: Home controller
       | Goblin      | 3           | 20    | Core       | 1             |
       | Snotling    | 30          | 2     | Special    | 1             |
     And   I am on the home page
-    Then  I should see "Total Points: 195"
+    Then  I should see "Total Points: 215"
 
   Scenario: Edit a troop
     Given the following Troops exist:
