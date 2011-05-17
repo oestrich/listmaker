@@ -2,7 +2,8 @@ class Troop < ActiveRecord::Base
   validates :name, :base_points, :point_type_id, :count, :presence => true
 
   belongs_to :troop_type
-  has_many :options
+
+  has_many :options, :dependent => :delete_all
 
   def self.point_types
     [:single, :group]

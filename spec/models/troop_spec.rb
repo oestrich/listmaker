@@ -31,4 +31,13 @@ describe Troop do
       Troop.total_points.should == 275
     end
   end
+
+  describe '#destroy' do
+    before do
+      Factory(:option, :troop => subject)
+    end
+    
+    it 'should destroy associated options' do
+    end
+  end
 end
