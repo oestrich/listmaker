@@ -13,6 +13,7 @@ Feature: Troop controller
     When I follow "Add Troop"
     And  I fill in "Name" with "Orc Warboss"
     And  I fill in "Base Points" with "75"
+    And  I fill in "Count" with "1"
     And  I select "single" from "Point Type"
     And  I select "Lord" from "Troop Type"
     And  I press "Add Troop"

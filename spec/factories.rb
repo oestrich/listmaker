@@ -7,4 +7,6 @@ Factory.define :troop do |f|
   f.sequence(:name) { |n| "Troop #{n}" }
   f.base_points 50
   f.point_type_id 0
+  f.count 1
+  f.association :troop_type, :factory => :troop_type
 end

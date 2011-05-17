@@ -9,6 +9,11 @@
 
   %br
 
+  = f.label :count
+  = f.text_field :count
+
+  %br
+
   = f.label :point_type_id, "Point Type"
   = f.select(:point_type_id, Troop.point_types, :prompt => true)
 

@@ -29,10 +29,20 @@ Feature: Home controller
 
   Scenario: I should see troops in categories
     Given the following Troops exist:
-      | name        | base_points | troop_type | point_type_id |
-      | Orc Warboss | 75          | Lord       | 0             |
+      | name        | base_points | count | troop_type | point_type_id |
+      | Orc Warboss | 75          | 1     | Lord       | 0             |
     And   I am on the home page
     Then  I should see "Orc Warboss" within "#troop-type-lord"
     And   I should see "75" within "#troop-type-lord"
     And   I should see "Single" within "#troop-type-lord"
+    And   I should see "1" within "#troop-type-lord"
+
+  Scenario: I should see total points
+    Given the following Troops exist:
+      | name        | base_points | count | troop_type | point_type_id |
+      | Orc Warboss | 75          | 1     | Lord       | 0             |
+      | Goblin      | 3           | 20    | Core       | 1             |
+      | Snotling    | 30          | 2     | Special    | 1             |
+    And   I am on the home page
+    Then  I should see "Total Points: 195"
 

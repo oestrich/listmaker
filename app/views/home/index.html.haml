@@ -6,6 +6,10 @@
   = link_to 'Add Troop Type', troop_types_path
   = link_to 'Add Troop', new_troop_path
 
+  .total_points
+    Total Points: 
+    = Troop.total_points
+
 .troop-types
   - troop_types.each do |troop_type|
     .troop-type{ :id => "troop-type-#{troop_type.name.downcase}" }
@@ -13,6 +17,8 @@
       %ul
         - troop_type.troops.each do |troop|
           %li
+            .count
+              = troop.count
             .name
               = troop.name
             .points
