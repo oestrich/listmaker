@@ -13,6 +13,8 @@ gem 'sass'
 gem 'decent_exposure'
 
 group :development, :test do
+  gem 'ruby-debug19', :require => 'ruby-debug'
+
   gem 'rspec'
   gem 'rspec-rails'
   gem 'cucumber'
