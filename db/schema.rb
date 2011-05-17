@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110517015325) do
+ActiveRecord::Schema.define(:version => 20110517041855) do
 
   create_table "troop_types", :force => true do |t|
     t.string   "name"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20110517015325) do
     t.string  "name"
     t.integer "base_points"
     t.integer "troop_type_id"
+    t.integer "point_type_id"
   end
 
 end

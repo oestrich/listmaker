@@ -29,9 +29,10 @@ Feature: Home controller
 
   Scenario: I should see troops in categories
     Given the following Troops exist:
-      | name        | base_points | troop_type |
-      | Orc Warboss | 75          | Lord       |
+      | name        | base_points | troop_type | point_type_id |
+      | Orc Warboss | 75          | Lord       | 0             |
     And   I am on the home page
     Then  I should see "Orc Warboss" within "#troop-type-lord"
     And   I should see "75" within "#troop-type-lord"
+    And   I should see "Single" within "#troop-type-lord"
 
