@@ -1,6 +1,15 @@
 %p#notice= notice
 
-Welcome
+.header 
+  Welcome
 
-= link_to 'Add Troop Type', troop_types_path
-= link_to 'Add Troop', new_troop_path
+  = link_to 'Add Troop Type', troop_types_path
+  = link_to 'Add Troop', new_troop_path
+
+.troop-types
+  - troop_types.each do |troop_type|
+    .troop-type{ :id => "troop-type-#{troop_type.name.downcase}" }
+      %h3= troop_type.name
+      %ul
+        - troop_type.troops.each do |troop|
+          %li= troop.name
