@@ -27,3 +27,5 @@
                 pts/per
               - else
                 pts
+            .delete
+              =button_to('Delete', troop_path(troop), :confirm => 'Are you sure?', :method => "delete")

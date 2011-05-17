@@ -19,6 +19,14 @@ class TroopsController < ApplicationController
   def update
     if troop.save
       redirect_to root_path, :notice => "Successfully updated '#{troop.name}'"
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    if troop.destroy
+      redirect_to root_path, :notice => "Successfully deleted '#{troop.name}'"
     end
   end
 end

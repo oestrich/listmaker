@@ -30,3 +30,11 @@ Feature: Troop controller
     And   I press "Update Goblin"
     Then  I should see "Successfully updated 'Goblin'"
     And   I should see "50 Goblin" within "#troop-type-core"
+
+  Scenario: I want to destroy a troop
+    Given the following Troops exist:
+      | name        | base_points | count | troop_type | point_type_id |
+      | Goblin      | 3           | 20    | Core       | 1             |
+    And   I am on the home page
+    When  I press "Delete" within "#troop-type-core"
+    Then  I should see "Successfully deleted 'Goblin'"
