@@ -8,6 +8,8 @@ gem 'jquery-rails'
 gem 'haml'
 gem 'haml-rails'
 
+gem 'decent_exposure'
+
 group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'

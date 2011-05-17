@@ -2,11 +2,11 @@
 
 %p
   %b Name:
-  = @troop_type.name
+  = troop_type.name
 %p
   %b Percentage:
-  = @troop_type.percentage
+  = troop_type.percentage
 
-= link_to 'Edit', edit_troop_type_path(@troop_type)
+= link_to 'Edit', edit_troop_type_path(troop_type)
 \|
 = link_to 'Back', troop_types_path
