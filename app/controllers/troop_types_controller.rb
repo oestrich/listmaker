@@ -38,7 +38,7 @@ class TroopTypesController < ApplicationController
   def create
     respond_to do |format|
       if troop_type.save
-        format.html { redirect_to(troop_type, :notice => 'Troop type was successfully created.') }
+        format.html { redirect_to(troop_type, :notice => "Successfully added '#{troop_type.name}' troop type") }
         format.xml  { render :xml => troop_type, :status => :created, :location => troop_type }
       else
         format.html { render :action => "new" }
