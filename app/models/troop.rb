@@ -18,6 +18,8 @@ class Troop < ActiveRecord::Base
   end
 
   def total_points
-    count * base_points
+    total_base_points = count * base_points
+    total_options = options.inject(0) { |sum, option| sum + option.total_points }
+    total_base_points + total_options
   end
 end

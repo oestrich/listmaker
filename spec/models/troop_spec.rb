@@ -1,23 +1,25 @@
 require 'spec_helper'
 
 describe Troop do
-  before { subject = Factory(:troop) }
+  before :each do
+    @subject = Factory(:troop)
+  end
 
   describe '#point_type' do
     it 'should return the correct point type' do
-      subject.point_type_id = 0
-      subject.point_type.should == :single
+      @subject.point_type_id = 0
+      @subject.point_type.should == :single
     end
   end
 
   describe '#total_points' do
     before do 
-      subject.update_attribute(:count, 10)
-      subject.update_attribute(:base_points, 25)
+      @subject.update_attribute(:count, 10)
+      @subject.update_attribute(:base_points, 25)
     end
 
     it 'should return correct total points' do
-      subject.total_points.should == 250
+      @subject.total_points.should == 250
     end
   end
 
@@ -34,7 +36,7 @@ describe Troop do
 
   describe '#destroy' do
     before do
-      Factory(:option, :troop => subject)
+      Factory(:option, :troop => @subject)
     end
     
     it 'should destroy associated options' do
