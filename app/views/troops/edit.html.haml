@@ -1,2 +1,6 @@
-- save_button_text = "Add Troop"
+%h4
+  Editing
+  = troop.name
+
+- save_button_text = "Update #{troop.name}"
 = render :partial => 'troops/form', :locals => { :save_button_text => save_button_text }

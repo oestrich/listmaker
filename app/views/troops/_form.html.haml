@@ -1,0 +1,27 @@
+= form_for troop do |f|
+  = f.label :name
+  = f.text_field :name
+
+  %br
+
+  = f.label :base_points, "Base Points"
+  = f.text_field :base_points
+
+  %br
+
+  = f.label :count
+  = f.text_field :count
+
+  %br
+
+  = f.label :point_type_id, "Point Type"
+  = f.select(:point_type_id, Troop.point_types, :prompt => true)
+
+  %br
+
+  = f.label :troop_type_id, "Troop Type"
+  = f.collection_select(:troop_type_id, troop_types, :id, :name, :prompt => true)
+
+  %br
+
+  = f.submit save_button_text

@@ -56,3 +56,11 @@ Feature: Home controller
     And   I am on the home page
     Then  I should see "Total Points: 195"
 
+  Scenario: Edit a troop
+    Given the following Troops exist:
+      | name        | base_points | count | troop_type | point_type_id |
+      | Goblin      | 3           | 20    | Core       | 1             |
+    And   I am on the home page
+    When  I follow "Goblin"
+    Then  I should see "Editing Goblin"
+

@@ -11,4 +11,14 @@ class TroopsController < ApplicationController
       redirect_to root_path, :notice => "Successfully added '#{troop.name}'"
     end
   end
+
+  def edit
+
+  end
+
+  def update
+    if troop.save
+      redirect_to root_path, :notice => "Successfully updated '#{troop.name}'"
+    end
+  end
 end

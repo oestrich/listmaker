@@ -20,7 +20,7 @@
             .count
               = troop.count
             .name
-              = troop.name
+              = link_to troop.name, edit_troop_path(troop)
             .points
               = troop.base_points
               - if troop.point_type == :group

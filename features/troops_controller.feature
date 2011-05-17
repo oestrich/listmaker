@@ -7,6 +7,7 @@ Feature: Troop controller
     Given The following Troop Types exist:
       | name | percentage |
       | Lord | 25         |
+      | Core | 50         |
     Given I am on the home page
 
   Scenario: I want to add a troop
@@ -18,3 +19,14 @@ Feature: Troop controller
     And  I select "Lord" from "Troop Type"
     And  I press "Add Troop"
     Then I should see "Successfully added 'Orc Warboss'"
+
+  Scenario: I want to edit a troop
+    Given the following Troops exist:
+      | name        | base_points | count | troop_type | point_type_id |
+      | Goblin      | 3           | 20    | Core       | 1             |
+    And   I am on the home page
+    When  I follow "Goblin"
+    And   I fill in "50" for "Count"
+    And   I press "Update Goblin"
+    Then  I should see "Successfully updated 'Goblin'"
+    And   I should see "50 Goblin" within "#troop-type-core"
