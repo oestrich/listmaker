@@ -1,0 +1,65 @@
+- content_for :javascripts do
+  = javascript_include_tag 'underscore'
+  = javascript_include_tag 'backbone'
+
+:javascript
+  $(function() { 
+    var TroopType = Backbone.Model.extend({});
+
+    var TroopTypeList = Backbone.Collection.extend({
+      model: TroopType,
+      url: '/troop_types'
+    });
+
+    var troop_types = new TroopTypeList;
+
+    var TroopTypeView = Backbone.View.extend({
+      tagName: "li",
+      template: _.template($('#troop-type-template').html()),
+
+      initialize: function() {
+        this.model.view = this;
+      },
+
+      render: function(){
+        $(this.el).html(this.template(this.model.toJSON()));
+        this.setContent();
+        return this;
+      },
+
+      setContent: function() {
+        var name = this.model.get('name');
+        var id = this.model.get('id');
+        this.$('.troop-type-name .name').text(name);
+        this.$('.troop-type-name .edit').attr('href', '/troop_types/' + id + '/edit');
+      }
+    });
+
+    var AppView = Backbone.View.extend({
+      el: $("#troopapp"),
+
+      initialize: function() {
+        troop_types.bind('refresh', this.addAll);
+        troop_types.fetch();
+      },
+
+      addAll: function() { 
+        troop_types.each(function(troop_type) { 
+          var view = new TroopTypeView({model: troop_type});
+          this.$("ul.troop-types").append(view.render().el);
+        });
+      }
+    });
+
+    window.App = new AppView;
+  });
+
+#troopapp
+  %script(type="text/template" id="troop-type-template")
+    %h3.troop-type-name
+      %span.name
+      %a.edit Edit
+      %a.delete X
+
+  %ul.troop-types#troop-type-sort
+    -#%li.troop-type

@@ -5,5 +5,7 @@ Listmaker::Application.routes.draw do
     resources :options
   end
 
+  match '/backbone' => 'home#backbone'
+
   root :to => 'home#index'
 end
