@@ -46,6 +46,8 @@
                     %ul
                       - troop.options.each do |option|
                         %li
+                          .delete
+                            = link_to "X", troop_option_path(troop, option), :method => 'delete', :confirm => "Are you sure?"
                           .points
                             = option.points
                             - if option.type == :single

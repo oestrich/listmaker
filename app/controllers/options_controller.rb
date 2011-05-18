@@ -13,4 +13,10 @@ class OptionsController < ApplicationController
       render 'new'
     end
   end
+
+  def destroy
+    if option.destroy
+      redirect_to root_path, :notice => "Successfully deleted '#{option.name}' option from '#{troop.name}'"
+    end
+  end
 end

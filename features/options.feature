@@ -24,3 +24,12 @@ Feature: Troop Options
     Then I should see "Successfully added 'Full Command' option to 'Orc Boys'"
     And  I should see "Full Command" within "#troop-type-core .options"
     And  I should see "30 pts" within "#troop-type-core .options"
+
+  Scenario: I want to remove an option
+    Given The following Options exist:
+      | name   | points | type_id | troop_name  |
+      | Shield | 10     | 0       | Orc Warboss |
+    And   I am on the home page
+    When  I follow "X" within "#orc-warboss"
+    Then  "Orc Warboss" should have "0" options
+    And   I should see "Successfully deleted 'Shield' option from 'Orc Warboss'"
