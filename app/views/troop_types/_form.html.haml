@@ -10,7 +10,10 @@
     = f.label :name
     = f.text_field :name
   .field
-    = f.label :percentage
-    = f.text_field :percentage
+    = f.label :min_percentage, "Min Percentage"
+    = f.text_field :min_percentage
+  .field
+    = f.label :max_percentage, "Max Percentage"
+    = f.text_field :max_percentage
   .actions
-    = f.submit 'Add Troop Type'
+    = f.submit submit_text

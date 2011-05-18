@@ -1,7 +1,4 @@
-%h1 Editing troop_type
+%h1 Editing #{troop_type.name}
 
-= render 'form'
+= render :partial => 'form', :locals => { :submit_text => "Update #{troop_type.name}" }
 
-= link_to 'Show', troop_type
-\|
-= link_to 'Back', troop_types_path

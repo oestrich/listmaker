@@ -14,6 +14,18 @@ class OptionsController < ApplicationController
     end
   end
 
+  def edit
+
+  end
+
+  def update
+    if option.save
+      redirect_to root_path, :notice => "Successfully updated '#{option.name}' option for '#{troop.name}'"
+    else
+      render edit
+    end
+  end
+
   def destroy
     if option.destroy
       redirect_to root_path, :notice => "Successfully deleted '#{option.name}' option from '#{troop.name}'"

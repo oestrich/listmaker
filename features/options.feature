@@ -4,10 +4,10 @@ Feature: Troop Options
   So that I can properly show troop points
 
   Background:
-    Given The following Troop Types exist:
-      | name | percentage |
-      | Lord | 25         |
-      | Core | 50         |
+    Given the following Troop Types exist:
+      | name | max_percentage |
+      | Lord | 25             |
+      | Core | 50             |
     Given the following Troops exist:
       | name        | base_points | count | troop_type | point_type_id |
       | Orc Warboss | 75          | 1     | Lord       | 0             |
@@ -33,3 +33,15 @@ Feature: Troop Options
     When  I follow "X" within "#orc-warboss"
     Then  "Orc Warboss" should have "0" options
     And   I should see "Successfully deleted 'Shield' option from 'Orc Warboss'"
+
+  Scenario: I want to edit an option
+    Given The following Options exist:
+      | name   | points | type_id | troop_name  |
+      | Shield | 10     | 0       | Orc Warboss |
+    And   I am on the home page
+    When  I follow "Shield" within "#orc-warboss"
+    And   I fill in "Name" with "Magic shield"
+    And   I select "group" from "Type"
+    And   I press "Save Option"
+    Then  I should see "Successfully updated 'Magic shield' option for 'Orc Warboss'"
+    And   I should see "Magic shield" within "#orc-warboss"

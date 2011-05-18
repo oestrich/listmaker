@@ -1,6 +1,7 @@
 Factory.define :troop_type do |f|
   f.sequence(:name) { |n| "Type #{n}" }
-  f.percentage 25
+  f.min_percentage 0
+  f.max_percentage 25
 end
 
 Factory.define :troop do |f|

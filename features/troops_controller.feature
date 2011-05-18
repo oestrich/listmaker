@@ -4,10 +4,10 @@ Feature: Troop controller
   So that I can manage troops
 
   Background:
-    Given The following Troop Types exist:
-      | name | percentage |
-      | Lord | 25         |
-      | Core | 50         |
+    Given the following Troop Types exist:
+      | name | max_percentage |
+      | Lord | 25             |
+      | Core | 50             |
     Given I am on the home page
 
   Scenario: I want to add a troop

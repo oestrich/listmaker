@@ -3,7 +3,7 @@
 .header 
   Welcome
 
-  = link_to 'Add Troop Type', troop_types_path
+  = link_to 'Add Troop Type', new_troop_type_path
   = link_to 'Add Troop', new_troop_path
 
   .total_points
@@ -13,7 +13,10 @@
 .troop-types
   - troop_types.each do |troop_type|
     .troop-type{ :id => "troop-type-#{troop_type.name.downcase}" }
-      %h3= troop_type.name
+      %h3
+        = troop_type.name
+        = link_to "Edit", edit_troop_type_path(troop_type)
+        = link_to "X", troop_type_path(troop_type), :method => "delete", :confirm => "Are you sure?"
       %ul
         - troop_type.troops.each do |troop|
           %li.troop
@@ -55,4 +58,4 @@
                             - else
                               = "pts/per #{troop.name}"
                           .name
-                            = option.name
+                            = link_to option.name, edit_troop_option_path(troop, option)

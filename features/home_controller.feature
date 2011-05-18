@@ -4,13 +4,13 @@ Feature: Home controller
   So that I can use the site
 
   Background:
-    Given The following Troop Types exist:
-      | name    | percentage |
-      | Lord    | 25         |
-      | Hero    | 25         |
-      | Core    | 50         |
-      | Special | 75         |
-      | Rare    | 50         |
+    Given the following Troop Types exist:
+      | name    | max_percentage |
+      | Lord    | 25             |
+      | Hero    | 25             |
+      | Core    | 100            |
+      | Special | 75             |
+      | Rare    | 50             |
     And   I am on the home page
 
   Scenario: Look at the index page
@@ -18,7 +18,7 @@ Feature: Home controller
 
   Scenario: I should see a link to add a troop type
     When  I follow "Add Troop Type"
-    Then  I should be on the troop types page
+    Then  I should be on the new troop type page
 
   Scenario: I should see troops in categories
     Then I should see "Lord"
