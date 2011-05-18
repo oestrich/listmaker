@@ -25,6 +25,10 @@ class Troop < ActiveRecord::Base
     total_base_points + total_options
   end
 
+  def css_selector
+    name.downcase.gsub(" ", "-")
+  end
+
   private
   def check_point_type_for_auto_add
     return if point_type != :group

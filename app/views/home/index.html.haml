@@ -17,32 +17,40 @@
       %ul
         - troop_type.troops.each do |troop|
           %li.troop
-            .delete
-              =button_to('Delete', troop_path(troop), :confirm => 'Are you sure?', :method => "delete")
-            .count
-              = troop.count
-            .name
-              = link_to troop.name, edit_troop_path(troop)
-            .points
-              = troop.base_points
-              - if troop.point_type == :group
-                pts/per
-              - else
-                pts
-            .options
-              = link_to 'Add option', new_troop_option_path(troop)
-              %h5 Options
-              - if troop.options.count == 0
-                None
-              - else
-                %ul
-                  - troop.options.each do |option|
-                    %li
-                      .points
-                        = option.points
-                        - if option.type == :single
-                          pts
-                        - else
-                          = "pts/per #{troop.name}"
-                      .name
-                        = option.name
+            %div
+              %h4
+                = link_to troop.name, '#', :id => "#{troop.css_selector}-button" 
+                .count
+                  = troop.count
+              :javascript
+                $('##{troop.css_selector}-button').click(function(){
+                  $('##{troop.css_selector}').toggle('blind');
+                });
+              %div{:id => troop.css_selector }
+                .delete
+                  = button_to('Delete', troop_path(troop), :confirm => 'Are you sure?', :method => "delete")
+                .name
+                  = link_to "Edit #{troop.name}", edit_troop_path(troop)
+                .points
+                  = troop.base_points
+                  - if troop.point_type == :group
+                    pts/per
+                  - else
+                    pts
+                .options
+                  = link_to 'Add option', new_troop_option_path(troop)
+                  %h5 Options
+                  - if troop.options.count == 0
+                    None
+                  - else
+                    %ul
+                      - troop.options.each do |option|
+                        %li
+                          .points
+                            = option.points
+                            - if option.type == :single
+                              pts
+                            - else
+                              = "pts/per #{troop.name}"
+                          .name
+                            = option.name

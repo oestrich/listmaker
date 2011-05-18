@@ -61,6 +61,6 @@ Feature: Home controller
       | name        | base_points | count | troop_type | point_type_id |
       | Goblin      | 3           | 20    | Core       | 1             |
     And   I am on the home page
-    When  I follow "Goblin"
+    When  I follow "Edit Goblin"
     Then  I should see "Editing Goblin"
 

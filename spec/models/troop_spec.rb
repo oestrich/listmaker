@@ -34,6 +34,11 @@ describe Troop do
     end
   end
 
+  it '#css_selector' do
+    @subject.update_attribute(:name, 'Baddie McEnemy')
+    @subject.css_selector.should == 'baddie-mcenemy'
+  end
+
   describe '#destroy' do
     before :each do
       Factory(:option, :troop => @subject)

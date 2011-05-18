@@ -25,12 +25,12 @@ Feature: Troop controller
       | name        | base_points | count | troop_type | point_type_id |
       | Goblin      | 3           | 20    | Core       | 1             |
     And   I am on the home page
-    When  I follow "Goblin"
+    When  I follow "Edit Goblin"
     And   I fill in "50" for "Count"
     And   I select "group" from "Point Type"
     And   I press "Update Goblin"
     Then  I should see "Successfully updated 'Goblin'"
-    And   I should see "50 Goblin" within "#troop-type-core"
+    And   I should see "Goblin 50" within "#troop-type-core"
     And   I should see "3 pts/per" within "#troop-type-core"
 
   Scenario: I want to destroy a troop
