@@ -8,7 +8,7 @@ body {
   .troop-type ul {
     list-style-type: none;
     height: 300px;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     padding-left: 20px;
     width: 280px; }
