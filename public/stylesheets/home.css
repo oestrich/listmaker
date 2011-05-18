@@ -3,8 +3,23 @@ body {
   margin-left: auto;
   margin-right: auto; }
 
+.handle {
+  cursor: move; }
+
+.troop-types {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px; }
+
 .troop-type {
-  float: left; }
+  background-color: #aabbaa;
+  float: left;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  -moz-border-radius: 5px; }
+  .troop-type h3 {
+    margin: 5px auto; }
   .troop-type ul {
     list-style-type: none;
     height: 300px;
