@@ -1,3 +1,6 @@
+- content_for :javascripts do
+  = javascript_include_tag 'home'
+
 %p#notice= notice
 
 .header 
@@ -10,63 +13,6 @@
     Total Points: 
     = Troop.total_points
 
-:javascript
-  $(function() {
-    $( "#troop-type-sort" ).sortable({
-      delay: 250,
-      handle: ".handle",
-      revert: true
-    });
-    $( "#troop-type-sort" ).disableSelection();
-  });
-
-  $('.troop-button').live('click', function(){
-    $(this).parents('div').find('.troop-content').toggle('blind');
-    console.log("toggled");
-  });
-
 %ul.troop-types#troop-type-sort
   - troop_types.each do |troop_type|
-    %li.troop-type{ :id => "troop-type-#{troop_type.name.downcase}" }
-      %h3.handle
-        = troop_type.name
-        = link_to "Edit", edit_troop_type_path(troop_type)
-        = link_to "X", troop_type_path(troop_type), :method => "delete", :confirm => "Are you sure?"
-      %ul
-        - troop_type.troops.each do |troop|
-          %li.troop
-            %div
-              %h4
-                = link_to troop.name, '#', :id => "#{troop.css_selector}-button", :class => 'troop-button'
-                .count
-                  = troop.count
-              %div.troop-content{:id => troop.css_selector }
-                .delete
-                  = button_to('Delete', troop_path(troop), :confirm => 'Are you sure?', :method => "delete")
-                .name
-                  = link_to "Edit #{troop.name}", edit_troop_path(troop)
-                .points
-                  = troop.base_points
-                  - if troop.point_type == :group
-                    pts/per
-                  - else
-                    pts
-                .options
-                  = link_to 'Add option', new_troop_option_path(troop)
-                  %h5 Options
-                  - if troop.options.count == 0
-                    None
-                  - else
-                    %ul
-                      - troop.options.each do |option|
-                        %li
-                          .delete
-                            = link_to "X", troop_option_path(troop, option), :method => 'delete', :confirm => "Are you sure?"
-                          .points
-                            = option.points
-                            - if option.type == :single
-                              pts
-                            - else
-                              = "pts/per #{troop.name}"
-                          .name
-                            = link_to option.name, edit_troop_option_path(troop, option)
+    = render troop_type
