@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110518034441) do
+ActiveRecord::Schema.define(:version => 20110518173356) do
 
   create_table "options", :force => true do |t|
     t.string   "name"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20110518034441) do
     t.datetime "updated_at"
     t.integer  "min_percentage", :default => 0
     t.integer  "max_percentage", :default => 0
+    t.integer  "position",       :default => 0
   end
 
   create_table "troops", :force => true do |t|
