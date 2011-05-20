@@ -4,21 +4,13 @@ $(function() {
     handle: ".handle",
     revert: true,
     update: function(event, ui){
-      var formData = "";
       $(".troop-type").each(function(index, li){
         var id = $(li).data("id");
-        var position = $("#position_" + id);
+        var position = $(".troop-type-position[id=troop_type_positions_position_" + id + "]");
 
         $(position).val(index + 1);
-
-        formData += "troop_type[positions][][id]=" + id + "&";
-        formData += "troop_type[positions][][position]=" + (index + 1) + "&";
       });
-      $.ajax({
-        url: "/troop_types/update_positions",
-        type: "POST",
-        data: formData,
-      });
+      $('#update-positions-troop-type').submit();
     }
   });
   $( "#troop-type-sort" ).disableSelection();
