@@ -35,11 +35,11 @@ class TroopTypesController < ApplicationController
   end
 
   def update_positions
-    params[:position].each do |troop_type_position|
-      troop_type = TroopType.find(troop_type_position[0])
-      troop_type.update_attribute(:position, troop_type_position[1])
+    params[:troop_type][:position].each do |position_update|
+      troop_type = TroopType.find(position_update[:id])
+      troop_type.update_attribute(:position, position_update[:position])
     end
 
-    render :text => "Success"
+    head :no_content
   end
 end
