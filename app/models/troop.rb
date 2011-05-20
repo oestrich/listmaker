@@ -7,6 +7,8 @@ class Troop < ActiveRecord::Base
 
   has_many :options, :dependent => :delete_all
 
+  default_scope :order => "id ASC"
+
   def self.point_types
     [:single, :group]
   end
@@ -27,6 +29,14 @@ class Troop < ActiveRecord::Base
 
   def css_selector
     name.downcase.gsub(" ", "-")
+  end
+
+  def toggle_visibility
+    update_attribute(:visibility, visibility == "visible" ? "hidden" : "visible")
+  end
+
+  def display_status
+    visibility == "visible" ? "block" : "none"
   end
 
   private

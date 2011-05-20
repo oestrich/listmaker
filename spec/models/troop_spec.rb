@@ -12,8 +12,26 @@ describe Troop do
     end
   end
 
+  describe '#toggle' do
+    it 'should toggle the visibility' do
+      @subject.toggle_visibility
+      @subject.visibility.should == "hidden"
+
+      @subject.toggle_visibility
+      @subject.visibility.should == "visible"
+    end
+  end
+
+  it '#display_status' do
+    @subject.display_status.should == "block"
+
+    @subject.toggle_visibility
+
+    @subject.display_status.should == "none"
+  end
+
   describe '#total_points' do
-    before do 
+    before :each do 
       @subject.update_attribute(:count, 10)
       @subject.update_attribute(:base_points, 25)
     end

@@ -4,7 +4,7 @@
       = link_to troop.name, '#', :id => "#{troop.css_selector}-button", :class => 'troop-button'
       .count
         = troop.count
-    %div.troop-content{:id => troop.css_selector }
+    %div.troop-content{ :id => troop.css_selector, "data-id" => troop.id, :style => "display: #{troop.display_status }" }
       .delete
         = button_to('Delete', troop_path(troop), :confirm => 'Are you sure?', :method => "delete")
       .name

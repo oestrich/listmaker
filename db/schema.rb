@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110518173356) do
+ActiveRecord::Schema.define(:version => 20110520145723) do
 
   create_table "options", :force => true do |t|
     t.string   "name"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20110518173356) do
     t.integer "troop_type_id"
     t.integer "point_type_id"
     t.integer "count",         :default => 1
+    t.string  "visibility",    :default => "visible"
   end
 
 end

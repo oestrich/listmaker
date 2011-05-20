@@ -29,4 +29,10 @@ class TroopsController < ApplicationController
       redirect_to root_path, :notice => "Successfully deleted '#{troop.name}'"
     end
   end
+
+  def toggle
+    troop.toggle_visibility
+
+    head :status => 204
+  end
 end

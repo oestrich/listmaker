@@ -5,6 +5,8 @@ Listmaker::Application.routes.draw do
 
   resources :troops do
     resources :options
+
+    match "/toggle" => :toggle, :as => :toggle
   end
 
   match '/backbone' => 'home#backbone'

@@ -15,10 +15,6 @@ $(function() {
   });
   $( "#troop-type-sort" ).disableSelection();
 
-  $('.troop-button').live('click', function(){
-    $(this).parents('div').find('.troop-content').toggle('blind');
-  });
-
   $('.dialog').click(function(e){
     e.preventDefault();
 
@@ -32,7 +28,32 @@ $(function() {
     $('#notice').delay(5000).fadeOut(3000);
   }
 
-  $(".toggle-troops").click(function(){
-    $(".troop-content").toggle('blind');
+  var toggle_ajax = function(el){
+    $.ajax({url: "/troops/" + $(el).data("id") + "/toggle"});
+  }
+
+  $('.troop-button').live('click', function(){
+    $(this).parents('div').find('.troop-content').each(function(index, el){
+      toggle_ajax(el);
+      $(el).toggle('blind');
+    });
+  });
+
+  $(".collapse-troops").click(function(){
+    $(".troop-content").each(function(index, el){
+      if($(el).css("display") == "block"){
+        toggle_ajax(el);
+        $(el).hide("blind");
+      }
+    });
+  });
+
+  $(".expand-troops").click(function(){
+    $(".troop-content").each(function(index, el){
+      if($(el).css("display") == "none"){
+        toggle_ajax(el);
+        $(el).show("blind");
+      }
+    });
   });
 });
