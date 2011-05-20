@@ -11,8 +11,8 @@ $(function() {
 
         $(position).val(index + 1);
 
-        formData += "troop_type[position][][id]=" + id + "&";
-        formData += "troop_type[position][][position]=" + (index + 1) + "&";
+        formData += "troop_type[positions][][id]=" + id + "&";
+        formData += "troop_type[positions][][position]=" + (index + 1) + "&";
       });
       $.ajax({
         url: "/troop_types/update_positions",

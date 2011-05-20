@@ -35,7 +35,7 @@ class TroopTypesController < ApplicationController
   end
 
   def update_positions
-    params[:troop_type][:position].each do |position_update|
+    params[:troop_type][:positions].each do |position_update|
       troop_type = TroopType.find(position_update[:id])
       troop_type.update_attribute(:position, position_update[:position])
     end
