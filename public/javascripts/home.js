@@ -14,9 +14,17 @@ $(function() {
     }
   });
   $( "#troop-type-sort" ).disableSelection();
-});
 
-$('.troop-button').live('click', function(){
-  $(this).parents('div').find('.troop-content').toggle('blind');
-  console.log("toggled");
+  $('.troop-button').live('click', function(){
+    $(this).parents('div').find('.troop-content').toggle('blind');
+  });
+
+  $('.dialog').click(function(e){
+    e.preventDefault();
+
+    var dialog = $("#dialog-output");
+
+    $(dialog).dialog();
+    dialog.load($(this).attr("href"));
+  });
 });
