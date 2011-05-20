@@ -27,4 +27,12 @@ $(function() {
     $(dialog).dialog();
     dialog.load($(this).attr("href"));
   });
+
+  if($('#notice').text() != ""){
+    $('#notice').delay(5000).fadeOut(3000);
+  }
+
+  $(".toggle-troops").click(function(){
+    $(".troop-content").toggle('blind');
+  });
 });
