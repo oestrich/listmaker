@@ -19,4 +19,9 @@ describe TroopType do
       @next.position.should == 3
     end
   end
+
+  it '#css_selector' do
+    @subject.update_attribute(:name, 'Baddie McEnemy')
+    @subject.css_selector.should == 'baddie-mcenemy'
+  end
 end

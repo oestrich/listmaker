@@ -19,6 +19,10 @@ class TroopType < ActiveRecord::Base
     super(options.merge(:only => [ :id, :name]))
   end
 
+  def css_selector
+    name.downcase.gsub(" ", "-")
+  end
+
   private
   def set_position
     highest_position = TroopType.highest_position

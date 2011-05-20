@@ -13,6 +13,11 @@
     Total Points: 
     = Troop.total_points
 
+= form_tag update_positions_troop_type_path, :method => :post, :id => "update-positions-troop-types" do
+  .positions
+    - troop_types.each do |troop_type|
+      = hidden_field_tag "position[#{troop_type.id}]", troop_type.position
+
 %ul.troop-types#troop-type-sort
   - troop_types.each do |troop_type|
     = render troop_type
