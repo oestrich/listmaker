@@ -11,6 +11,7 @@ class TroopTypesController < ApplicationController
   end
 
   def edit
+    render "edit", :layout => false
   end
 
   def create

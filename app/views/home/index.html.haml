@@ -21,7 +21,7 @@
       = hidden_field_tag "troop_type[positions][][id]", troop_type.id, :id => "troop_type_positions_id_#{troop_type.id}"
       = hidden_field_tag "troop_type[positions][][position]", troop_type.position, :id => "troop_type_positions_position_#{troop_type.id}", :class => "troop-type-position"
 
-#dialog-output(title = 'New')
+#dialog-output(title = 'ListMaker')
 
 %ul.troop-types#troop-type-sort
   - troop_types.each do |troop_type|

@@ -8,7 +8,7 @@
       .delete
         = button_to('Delete', troop_path(troop), :confirm => 'Are you sure?', :method => "delete")
       .name
-        = link_to "Edit #{troop.name}", edit_troop_path(troop)
+        = link_to "Edit #{troop.name}", edit_troop_path(troop), :class => "dialog"
       .points
         = troop.base_points
         - if troop.point_type == :group
@@ -16,7 +16,7 @@
         - else
           pts
       .options
-        = link_to 'Add option', new_troop_option_path(troop)
+        = link_to 'Add option', new_troop_option_path(troop), :class => "dialog"
         %h5 Options
         - if troop.options.count == 0
           None
@@ -33,4 +33,4 @@
                   - else
                     = "pts/per #{troop.name}"
                 .name
-                  = link_to option.name, edit_troop_option_path(troop, option)
+                  = link_to option.name, edit_troop_option_path(troop, option), :class => "dialog"

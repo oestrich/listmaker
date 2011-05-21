@@ -3,6 +3,7 @@ class OptionsController < ApplicationController
   expose(:option)
 
   def new
+    render "new", :layout => false
   end
 
   def create
@@ -15,7 +16,7 @@ class OptionsController < ApplicationController
   end
 
   def edit
-
+    render "edit", :layout => false
   end
 
   def update

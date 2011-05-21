@@ -3,7 +3,7 @@ class TroopsController < ApplicationController
   expose(:troop_types) { TroopType.all }
 
   def new
-
+    render "new", :layout => false
   end
 
   def create
@@ -13,7 +13,7 @@ class TroopsController < ApplicationController
   end
 
   def edit
-
+    render "edit", :layout => false
   end
 
   def update
