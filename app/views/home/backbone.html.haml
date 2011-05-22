@@ -11,7 +11,16 @@
       url: '/troop_types'
     });
 
-    var troop_types = new TroopTypeList;
+    var Troop = Backbone.Model.extend({});
+
+    var TroopList = Backbone.Collection.extend({
+      model: Troop,
+      url: '/troops'
+    });
+
+    window.troop_types = new TroopTypeList;
+
+    window.troops = new TroopList;
 
     var TroopTypeView = Backbone.View.extend({
       tagName: "li",
@@ -32,6 +41,31 @@
         var id = this.model.get('id');
         this.$('.troop-type-name .name').text(name);
         this.$('.troop-type-name .edit').attr('href', '/troop_types/' + id + '/edit');
+
+        this.$('.troop-type').data('id', id);
+      }
+    });
+
+    var TroopView = Backbone.View.extend({
+      tagName: "li",
+      template: _.template($('#troop-template').html()),
+
+      initialize: function() {
+        this.model.view = this;
+      },
+
+      render: function(){
+        $(this.el).html(this.template(this.model.toJSON()));
+        this.setContent();
+        return this;
+      },
+
+      setContent: function() {
+        var name = this.model.get('name');
+        var id = this.model.get('id');
+        var troop_type = this.model.get("troop_type_id");
+
+        this.$('.troop-name .name').text(name);
       }
     });
 
@@ -40,6 +74,8 @@
 
       initialize: function() {
         troop_types.bind('refresh', this.addAll);
+
+        troops.fetch();
         troop_types.fetch();
       },
 
@@ -47,6 +83,19 @@
         troop_types.each(function(troop_type) { 
           var view = new TroopTypeView({model: troop_type});
           this.$("ul.troop-types").append(view.render().el);
+
+          var troop_type_troops = troops.select(function(troop){
+            return troop.get('troop_type_id') == troop_type.get('id');
+          });
+
+          troop_type_troops.forEach(function(troop){
+            var troopView = new TroopView({model: troop});
+            var troopElement = troopView.render().el;
+
+            $(troopElement).attr("class", "troop");
+
+            view.$('.troop-type ul.troops').append(troopElement);
+          });
         });
       }
     });
@@ -56,10 +105,16 @@
 
 #troopapp
   %script(type="text/template" id="troop-type-template")
-    %h3.troop-type-name
+    .troop-type
+      %h3.troop-type-name
+        %span.name
+        %a.edit Edit
+        %a.delete X
+      %ul.troops
+
+  %script(type="text/template" id="troop-template")
+    %h4.troop-name
       %span.name
-      %a.edit Edit
-      %a.delete X
 
   %ul.troop-types#troop-type-sort
     -#%li.troop-type

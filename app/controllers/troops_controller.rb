@@ -1,6 +1,11 @@
 class TroopsController < ApplicationController
+  expose(:troops) { Troop.all }
   expose(:troop)
   expose(:troop_types) { TroopType.all }
+
+  def index
+    render :json => troops
+  end
 
   def new
     render "new", :layout => false
