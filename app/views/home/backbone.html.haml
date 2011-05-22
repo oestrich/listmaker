@@ -64,8 +64,12 @@
         var name = this.model.get('name');
         var id = this.model.get('id');
         var troop_type = this.model.get("troop_type_id");
+        var points = this.model.get("base_points");
 
         this.$('.troop-name .name').text(name);
+        this.$('.troop-content .name').text(name);
+        this.$('.troop-content .edit').text("Edit " + name);
+        this.$('.troop-content .points').text(points + " pts");
       }
     });
 
@@ -115,6 +119,12 @@
   %script(type="text/template" id="troop-template")
     %h4.troop-name
       %span.name
+    .troop-content
+      .name
+      .edit
+      .points
+      .options
+        %h5 Options
 
   %ul.troop-types#troop-type-sort
     -#%li.troop-type
