@@ -4,7 +4,11 @@
 
 :javascript
   $(function() { 
-    var TroopType = Backbone.Model.extend({});
+    var TroopType = Backbone.Model.extend({
+      initialize: function() {
+        this.troops = new TroopList(this.get("troops"));
+      }
+    });
 
     var TroopTypeList = Backbone.Collection.extend({
       model: TroopType,
@@ -12,6 +16,10 @@
     });
 
     var Troop = Backbone.Model.extend({});
+
+    var TroopList = Backbone.Collection.extend({
+      model: Troop
+    });
 
     window.troop_types = new TroopTypeList;
 
@@ -80,7 +88,7 @@
           var view = new TroopTypeView({model: troop_type});
           this.$("ul.troop-types").append(view.render().el);
 
-          troop_type.get("troops").forEach(function(troop){
+          troop_type.troops.forEach(function(troop){
             var troopView = new TroopView({model: new Troop(troop)});
             var troopElement = troopView.render().el;
 
