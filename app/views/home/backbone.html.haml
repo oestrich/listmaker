@@ -13,14 +13,7 @@
 
     var Troop = Backbone.Model.extend({});
 
-    var TroopList = Backbone.Collection.extend({
-      model: Troop,
-      url: '/troops'
-    });
-
     window.troop_types = new TroopTypeList;
-
-    window.troops = new TroopList;
 
     var TroopTypeView = Backbone.View.extend({
       tagName: "li",
@@ -79,7 +72,6 @@
       initialize: function() {
         troop_types.bind('refresh', this.addAll);
 
-        troops.fetch();
         troop_types.fetch();
       },
 
@@ -88,12 +80,8 @@
           var view = new TroopTypeView({model: troop_type});
           this.$("ul.troop-types").append(view.render().el);
 
-          var troop_type_troops = troops.select(function(troop){
-            return troop.get('troop_type_id') == troop_type.get('id');
-          });
-
-          troop_type_troops.forEach(function(troop){
-            var troopView = new TroopView({model: troop});
+          troop_type.get("troops").forEach(function(troop){
+            var troopView = new TroopView({model: new Troop(troop)});
             var troopElement = troopView.render().el;
 
             $(troopElement).attr("class", "troop");

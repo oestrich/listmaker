@@ -3,7 +3,7 @@ class TroopTypesController < ApplicationController
   expose(:troop_type)
 
   def index
-    render :json => troop_types
+    render :json => troop_types.to_json(:include => { :troops => {}} )
   end
 
   def new
